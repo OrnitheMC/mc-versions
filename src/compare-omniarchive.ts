@@ -163,6 +163,10 @@ function omni2mcv(version: string) {
         'inf-20100616-1808': 'inf-20100616',
         // Other
         '1.2-pre': '1.2',
+        'pc-132011-launcher': 'rd-132211-launcher',
+        'pc-132128-launcher': 'rd-132328-launcher',
+        'pc-152252-launcher': 'rd-160052-launcher',
+        'pc-161148-launcher': 'rd-161348-launcher',
     })[version]
     if (v2) return v2
     if (version.startsWith('combat')) return 'combat-' + version.slice(6)
