@@ -3,3 +3,4 @@ dist/
 .vscode/
 google-service-account.json
 .idea/
+storage/
