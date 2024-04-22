@@ -53,8 +53,7 @@ for await (const file of Deno.readDir('data/version')) {
 
 const allOmni = new Set(omniVersions.filter(version => {
     if (!version.found || !version.type) return false
-    if (version.notes?.includes('Headache Type 3') && version.id.endsWith('-pre')) return false
-    return true
+    return !(version.notes?.includes('Headache Type 3') && version.id.endsWith('-pre'));
 }).map(version => `${version.type}-${omni2mcv(version.id)}`))
 for (const version of omniVersions) {
     if (version.notes?.includes('Headache Type 3') && !version.id.endsWith('-pre')) {
@@ -93,81 +92,83 @@ for (const set of Object.values(groupBy(diff, d => {
     console.log()
 }
 
+export const omni2mcvMap: { [key: string]: string } = {
+    // TODO: Fix in mc-versions:
+    '1.0.0-rc2-1633': '1.0.0-rc2-1',
+    '1.0.0-rc2-1649': '1.0.0-rc2-2',
+    '1.0.0-rc2-1656': '1.0.0-rc2-3',
+    '1.16.5-rc1-1005': '1.16.5-rc1-1',
+    '1.16.5-rc1-1558': '1.16.5-rc1-2',
+    // Maybe adjust in mc-versions (not strictly wrong, but doesn't match omni):
+    'b1.6-trailer': 'b1.6-pre-trailer',
+    'b1.8-pre1-081459': 'b1.8-pre1-201109081459',
+    'b1.8-pre1-091357': 'b1.8-pre1-201109091357',
+    'b1.8-pre1-091358': 'b1.8-pre1-201109091357',
+    'b1.9-pre3': 'b1.9-pre3-201110061350',
+    'b1.9-pre3-1350': 'b1.9-pre3-201110061350',
+    'b1.9-pre3-1402': 'b1.9-pre3-201110061402',
+    'b1.9-pre4-1425': 'b1.9-pre4-201110131425',
+    'b1.9-pre4-1434': 'b1.9-pre4-201110131434',
+    'b1.9-pre4-1435': 'b1.9-pre4-201110131434',
+    'b1.9-pre4-1441': 'b1.9-pre4-201110131440',
+    '1.3-pre-1249': '1.3-pre-07261249',
+    '1.4.1-pre-1338': '1.4.1-pre-10231538',
+    '1.6-pre-1517': '1.6-pre-06251516',
+    '1.16-221349': '1.16-1149',
+    '1.16-231620': '1.16-1420',
+    '13w16a-192037': '13w16a-04192037',
+    '13w16b-2151': '13w16b-04232151',
+    '13w23b-0101': '13w23b-06080101',
+    '13w23b-0102': '13w23b-06080101',
+    '13w36a-1446': '13w36a-09051446',
+    '13w36b-1310': '13w36b-09061310',
+    '14w27b-1646': '14w27b-07021646',
+    '14w34c-1549': '14w34c-08191549',
+    'combat7': 'combat-7a',
+    // Found versions are not ambiguous (can stay like that until the other version is found):
+    'c0.0.12a_03-200018': 'c0.0.12a_03',
+    'c0.0.16a_02-081047': 'c0.0.16a_02',
+    'c0.0.17a-2014': 'c0.0.17a',
+    'c0.0.21a-2008': 'c0.0.21a',
+    '1.7-pre-1602': '1.7-pre',
+    '1.7.10-pre2-1045': '1.7.10-pre2',
+    '12w17a-04261424': '12w17a',
+    '12w17a-1424': '12w17a',
+    '12w32a-1532': '12w32a',
+    '12w39a-1243': '12w39a',
+    '13w12~-1439': '13w12~',
+    '13w38c-1516': '13w38c',
+    '14w04a-1740': '14w04a',
+    '14w11b-1650': '14w11b',
+    // Versions where omniarchive has different versions for client and server, while mc-versions combines some of them:
+    'b1.1': 'b1.1-1245',
+    'b1.4': 'b1.4-1507',
+    '1.6.2': '1.6.2-091847',
+    '1.7.7': '1.7.7-101331',
+    '1.14.2-pre4-270721': '1.14.2-pre4-270720',
+    '13w05a-1503': '13w05a-1504',
+    '13w05a-1537': '13w05a-1538',
+    '13w06a-1558': '13w06a-1559',
+    '13w36b': '13w36b-09061310',
+    '13w41b': '13w41b-1523',
+    '14w04b-1555': '14w04b-1554',
+    '17w18a-1331': '17w18a',
+    '17w18a-1450': '17w18a',
+    // Pretty sure the UTC conversion was done incorrectly for omniarchive:
+    'in-20091231-2255': 'in-20091231-2257',
+    'in-20100104-2258': 'in-20100105',
+    'in-20100218-0016': 'in-20100218',
+    'inf-20100616-1808': 'inf-20100616',
+    // Other
+    '1.2-pre': '1.2',
+    'pc-132011-launcher': 'rd-132211-launcher',
+    'pc-132128-launcher': 'rd-132328-launcher',
+    'pc-152252-launcher': 'rd-160052-launcher',
+    'pc-161148-launcher': 'rd-161348-launcher',
+}
+
 function omni2mcv(version: string) {
-    const v2 = ({
-        // TODO: Fix in mc-versions:
-        '1.0.0-rc2-1633': '1.0.0-rc2-1',
-        '1.0.0-rc2-1649': '1.0.0-rc2-2',
-        '1.0.0-rc2-1656': '1.0.0-rc2-3',
-        '1.16.5-rc1-1005': '1.16.5-rc1-1',
-        '1.16.5-rc1-1558': '1.16.5-rc1-2',
-        // Maybe adjust in mc-versions (not strictly wrong, but doesn't match omni):
-        'b1.6-trailer': 'b1.6-pre-trailer',
-        'b1.8-pre1-081459': 'b1.8-pre1-201109081459',
-        'b1.8-pre1-091357': 'b1.8-pre1-201109091357',
-        'b1.8-pre1-091358': 'b1.8-pre1-201109091357',
-        'b1.9-pre3': 'b1.9-pre3-201110061350',
-        'b1.9-pre3-1350': 'b1.9-pre3-201110061350',
-        'b1.9-pre3-1402': 'b1.9-pre3-201110061402',
-        'b1.9-pre4-1425': 'b1.9-pre4-201110131425',
-        'b1.9-pre4-1434': 'b1.9-pre4-201110131434',
-        'b1.9-pre4-1435': 'b1.9-pre4-201110131434',
-        'b1.9-pre4-1441': 'b1.9-pre4-201110131440',
-        '1.3-pre-1249': '1.3-pre-07261249',
-        '1.4.1-pre-1338': '1.4.1-pre-10231538',
-        '1.6-pre-1517': '1.6-pre-06251516',
-        '1.16-221349': '1.16-1149',
-        '1.16-231620': '1.16-1420',
-        '13w16a-192037': '13w16a-04192037',
-        '13w16b-2151': '13w16b-04232151',
-        '13w23b-0101': '13w23b-06080101',
-        '13w23b-0102': '13w23b-06080101',
-        '13w36a-1446': '13w36a-09051446',
-        '13w36b-1310': '13w36b-09061310',
-        '14w27b-1646': '14w27b-07021646',
-        '14w34c-1549': '14w34c-08191549',
-        'combat7': 'combat-7a',
-        // Found versions are not ambiguous (can stay like that until the other version is found):
-        'c0.0.12a_03-200018': 'c0.0.12a_03',
-        'c0.0.16a_02-081047': 'c0.0.16a_02',
-        'c0.0.17a-2014': 'c0.0.17a',
-        'c0.0.21a-2008': 'c0.0.21a',
-        '1.7-pre-1602': '1.7-pre',
-        '1.7.10-pre2-1045': '1.7.10-pre2',
-        '12w17a-04261424': '12w17a',
-        '12w17a-1424': '12w17a',
-        '12w32a-1532': '12w32a',
-        '12w39a-1243': '12w39a',
-        '13w12~-1439': '13w12~',
-        '13w38c-1516': '13w38c',
-        '14w04a-1740': '14w04a',
-        '14w11b-1650': '14w11b',
-        // Versions where omniarchive has different versions for client and server, while mc-versions combines some of them:
-        'b1.1': 'b1.1-1245',
-        'b1.4': 'b1.4-1507',
-        '1.6.2': '1.6.2-091847',
-        '1.7.7': '1.7.7-101331',
-        '1.14.2-pre4-270721': '1.14.2-pre4-270720',
-        '13w05a-1503': '13w05a-1504',
-        '13w05a-1537': '13w05a-1538',
-        '13w06a-1558': '13w06a-1559',
-        '13w36b': '13w36b-09061310',
-        '13w41b': '13w41b-1523',
-        '14w04b-1555': '14w04b-1554',
-        '17w18a-1331': '17w18a',
-        '17w18a-1450': '17w18a',
-        // Pretty sure the UTC conversion was done incorrectly for omniarchive:
-        'in-20091231-2255': 'in-20091231-2257',
-        'in-20100104-2258': 'in-20100105',
-        'in-20100218-0016': 'in-20100218',
-        'inf-20100616-1808': 'inf-20100616',
-        // Other
-        '1.2-pre': '1.2',
-        'pc-132011-launcher': 'rd-132211-launcher',
-        'pc-132128-launcher': 'rd-132328-launcher',
-        'pc-152252-launcher': 'rd-160052-launcher',
-        'pc-161148-launcher': 'rd-161348-launcher',
-    })[version]
+    const v2 = omni2mcvMap[version]
     if (v2) return v2
     if (version.startsWith('combat')) return 'combat-' + version.slice(6)
     if (version.startsWith('1.18-exp')) return '1.18_experimental-snapshot-' + version.slice(8)

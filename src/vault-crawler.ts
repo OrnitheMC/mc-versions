@@ -2,8 +2,9 @@
 // noinspection JSUnusedGlobalSymbols
 
 import { CheerioCrawler, Dataset, sleep } from 'npm:crawlee@3.8.2'
+import { omni2mcvMap } from "./compare-omniarchive.ts";
 
-const versionMap = new Map()
+const versionTypeMap = new Map()
 const crawler = new CheerioCrawler({
     async requestHandler ({request, $, enqueueLinks, log}){
         const title = $('title').text()
@@ -22,6 +23,7 @@ const crawler = new CheerioCrawler({
             })
             .filter(Boolean)
 
+        const versionMap = new Map()
         versions.forEach(version => {
             const link = version![0]
             const date = version![1][0]
@@ -31,6 +33,15 @@ const crawler = new CheerioCrawler({
             versionMap.set(version![0], version![1])
             return log.info(`Found version: ${link} uploaded on ${date} at ${time} with a size of ${size} bytes`)
         })
+
+        const versionType = title.match(/(?<=\/archive\/java\/(client|server)-)[a-z]*(?=\/)/)
+
+        const tempMap = versionTypeMap.get(versionType)
+        if (tempMap) {
+            versionTypeMap.set(versionType, new Map([...tempMap, ...versionMap]))
+        } else {
+            versionTypeMap.set(versionType, versionMap)
+        }
 
         await sleep(10)
 
@@ -46,7 +57,9 @@ const crawler = new CheerioCrawler({
 await crawler.run(['https://vault.omniarchive.uk/archive/java/index.html'])
 //await crawler.run(['https://vault.omniarchive.uk/archive/java/client-preclassic/index.html'])
 
-console.log(`Found ${versionMap.size} version files`)
+console.log(`Found ${versionTypeMap.size} version types`)
+
+await Deno.writeTextFile("versionMap.json", JSON.stringify(versionTypeMap))
 
 function verifyExtension(link: string) {
     return link.endsWith('.jar') || link.endsWith('.zip') && link.includes('server-classic')
