@@ -51,47 +51,6 @@ for await (const file of Deno.readDir('data/version')) {
     mcVersions.push(JSON.parse(await Deno.readTextFile('data/version/' + file.name)))
 }
 
-const allOmni = new Set(omniVersions.filter(version => {
-    if (!version.found || !version.type) return false
-    return !(version.notes?.includes('Headache Type 3') && version.id.endsWith('-pre'));
-}).map(version => `${version.type}-${omni2mcv(version.id)}`))
-for (const version of omniVersions) {
-    if (version.notes?.includes('Headache Type 3') && !version.id.endsWith('-pre')) {
-        allOmni.delete('client-' + version.id + '-pre')
-        allOmni.delete('server-' + version.id + '-pre')
-    }
-}
-allOmni.delete('client-1.7.3')
-allOmni.add('client-1.7.3-pre')
-allOmni.add('server-1.7.3-pre')
-// Oddballs
-for (const type of ['client', 'server']) for (const variant of ['red', 'blue', 'purple']) allOmni.add(type + '-af-2013-' + variant)
-allOmni.add('server-' + omni2mcv('b1.6-trailer'))
-
-const allMcVersions = new Set(mcVersions.flatMap(v => {
-    const result = []
-    if (v.client) result.push('client-' + v.id)
-    if (v.id.startsWith('server-')) result.push(v.id)
-    else if (v.server || v.downloads.server_zip) result.push('server-' + v.id)
-    return result
-}))
-
-const all = new Set([...allOmni, ...allMcVersions])
-const diff: string[] = []
-for (const version of all) {
-    if (allOmni.has(version) && allMcVersions.has(version)) continue
-    diff.push(`${version} ${allOmni.has(version) ? 'omni' : 'mc-versions'}`)
-}
-diff.sort()
-for (const set of Object.values(groupBy(diff, d => {
-    const v = d.slice(0, d.indexOf(' '))
-    const dash = v.lastIndexOf('-')
-    return dash > 7 ? v.slice(7, dash) : v.slice(7)
-}))) {
-    for (const d of set) console.log(d)
-    console.log()
-}
-
 export const omni2mcvMap: { [key: string]: string } = {
     // TODO: Fix in mc-versions:
     '1.0.0-rc2-1633': '1.0.0-rc2-1',
@@ -165,6 +124,47 @@ export const omni2mcvMap: { [key: string]: string } = {
     'pc-132128-launcher': 'rd-132328-launcher',
     'pc-152252-launcher': 'rd-160052-launcher',
     'pc-161148-launcher': 'rd-161348-launcher',
+}
+
+const allOmni = new Set(omniVersions.filter(version => {
+    if (!version.found || !version.type) return false
+    return !(version.notes?.includes('Headache Type 3') && version.id.endsWith('-pre'));
+}).map(version => `${version.type}-${omni2mcv(version.id)}`))
+for (const version of omniVersions) {
+    if (version.notes?.includes('Headache Type 3') && !version.id.endsWith('-pre')) {
+        allOmni.delete('client-' + version.id + '-pre')
+        allOmni.delete('server-' + version.id + '-pre')
+    }
+}
+allOmni.delete('client-1.7.3')
+allOmni.add('client-1.7.3-pre')
+allOmni.add('server-1.7.3-pre')
+// Oddballs
+for (const type of ['client', 'server']) for (const variant of ['red', 'blue', 'purple']) allOmni.add(type + '-af-2013-' + variant)
+allOmni.add('server-' + omni2mcv('b1.6-trailer'))
+
+const allMcVersions = new Set(mcVersions.flatMap(v => {
+    const result = []
+    if (v.client) result.push('client-' + v.id)
+    if (v.id.startsWith('server-')) result.push(v.id)
+    else if (v.server || v.downloads.server_zip) result.push('server-' + v.id)
+    return result
+}))
+
+const all = new Set([...allOmni, ...allMcVersions])
+const diff: string[] = []
+for (const version of all) {
+    if (allOmni.has(version) && allMcVersions.has(version)) continue
+    diff.push(`${version} ${allOmni.has(version) ? 'omni' : 'mc-versions'}`)
+}
+diff.sort()
+for (const set of Object.values(groupBy(diff, d => {
+    const v = d.slice(0, d.indexOf(' '))
+    const dash = v.lastIndexOf('-')
+    return dash > 7 ? v.slice(7, dash) : v.slice(7)
+}))) {
+    for (const d of set) console.log(d)
+    console.log()
 }
 
 function omni2mcv(version: string) {
