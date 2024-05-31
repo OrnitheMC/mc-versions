@@ -14,15 +14,17 @@ for (const sheet of spreadsheet.sheets!) {
     const grid = sheet.data![0]
     let title: (string|undefined)[] = []
     let previous: Record<string, any> = {}
+    let category: string = ""
     for (const row of grid.rowData!) {
         const colors = row.values!.map(cell => getStatus(cell.effectiveFormat?.backgroundColorStyle?.rgbColor || {}))
-        const status = colors[colors.length - 1]
+        const status = colors[1]
         const text = row.values!.map(cell => cell.formattedValue)
         if (status.type === 'header' && text[1] === 'ID') {
             title = text.map(it => it?.toLowerCase())
             continue
         }
-        let data: Record<string, any> = {...status, category: title[0]!}
+        if (text[0]) category = text[0]!.toLowerCase()
+        let data: Record<string, any> = {...status, category: category}
         for (let i = 0; i < title.length; i++) {
             if (i === 0) continue
             const cell = row.values![i]
@@ -35,9 +37,10 @@ for (const sheet of spreadsheet.sheets!) {
             if (title[i] && rawValue !== undefined) data[title[i]!] = rawValue
         }
         const sheetId = sheet.properties?.sheetId
-        const platform: string|undefined = data?.platform
-        if (sheetId === 872531987 || sheetId === 804883379 || platform?.startsWith('Client')) data.type = 'client'
-        else if (sheetId === 2126693093 || sheetId === 59329510 || platform?.startsWith('Server')) data.type = 'server'
+        const platform: string|undefined = data?.type
+        const notes: string|undefined = data?.notes
+        if (sheetId === 872531987 || sheetId === 804883379 || platform?.startsWith('Client') || notes?.includes('client')) data.side = 'client'
+        else if (sheetId === 2126693093 || sheetId === 59329510 || platform?.startsWith('Server') || notes?.includes('server')) data.side = 'server'
         if (!data.id && !data.version) data = {...previous, ...data}
         omniVersions.push(data)
         //console.log(JSON.stringify(data))
@@ -127,9 +130,9 @@ export const omni2mcvMap: { [key: string]: string } = {
 }
 
 const allOmni = new Set(omniVersions.filter(version => {
-    if (!version.found || !version.type) return false
+    if (!version.found || !version.side) return false
     return !(version.notes?.includes('Headache Type 3') && version.id.endsWith('-pre'));
-}).map(version => `${version.type}-${omni2mcv(version.id)}`))
+}).map(version => `${version.side}-${omni2mcv(version.id)}`))
 for (const version of omniVersions) {
     if (version.notes?.includes('Headache Type 3') && !version.id.endsWith('-pre')) {
         allOmni.delete('client-' + version.id + '-pre')
