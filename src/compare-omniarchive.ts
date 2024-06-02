@@ -7,6 +7,25 @@ import { auth, Sheets } from 'https://googleapis.deno.dev/v1/sheets:v4.ts'
 const account = auth.fromJSON(JSON.parse(await Deno.readTextFile('google-service-account.json')))
 const sheetsApi = new Sheets(account)
 
+const skipMap: { [key: string]: boolean } = {
+    "af-2020": true,
+    "af-2021": true,
+    "af-2022": true,
+    "23w13a_or_b-0722": true,
+    "23w13a_or_b-1249": true,
+    "24w14potato-0838": true,
+    "24w14potato-1104": true,
+    "combat4": true,
+    "combat5": true,
+    "combat6": true,
+    "combat7": true,
+    "combat7b": true,
+    "combat7c": true,
+    "combat8": true,
+    "combat8b": true,
+    "combat8c": true
+}
+
 const spreadsheet = await sheetsApi.spreadsheetsGet('1OCxMNQLeZJi4BlKKwHx2OlzktKiLEwFXnmCrSdAFwYQ', {includeGridData: true})
 const omniVersions = []
 for (const sheet of spreadsheet.sheets!) {
@@ -19,10 +38,13 @@ for (const sheet of spreadsheet.sheets!) {
         const colors = row.values!.map(cell => getStatus(cell.effectiveFormat?.backgroundColorStyle?.rgbColor || {}))
         const status = colors[1]
         const text = row.values!.map(cell => cell.formattedValue)
-        if (status.type === 'header' && text[1] === 'ID') {
+        const id = text[1];
+        if (status.type === 'header' && id === 'ID') {
             title = text.map(it => it?.toLowerCase())
             continue
         }
+        if (id === '1.15' || id === '19w37a' || id === '13w47a-preview') break
+        if (skipMap[id!]) continue
         if (text[0]) category = text[0]!.toLowerCase()
         let data: Record<string, any> = {...status, category: category}
         for (let i = 0; i < title.length; i++) {
@@ -142,9 +164,6 @@ for (const version of omniVersions) {
 allOmni.delete('client-1.7.3')
 allOmni.add('client-1.7.3-pre')
 allOmni.add('server-1.7.3-pre')
-// Oddballs
-for (const type of ['client', 'server']) for (const variant of ['red', 'blue', 'purple']) allOmni.add(type + '-af-2013-' + variant)
-allOmni.add('server-' + omni2mcv('b1.6-trailer'))
 
 const allMcVersions = new Set(mcVersions.flatMap(v => {
     const result = []
