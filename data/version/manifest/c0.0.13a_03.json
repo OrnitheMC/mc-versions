@@ -10,12 +10,12 @@
   "assets": "pre-1.6",
   "downloads": {
     "client": {
-      "sha1": "7ba9e63aec8a15a99ecd47900c848cdce8a51a03",
-      "size": 66276,
-      "url": "https://launcher.mojang.com/v1/objects/7ba9e63aec8a15a99ecd47900c848cdce8a51a03/client.jar"
+      "sha1": "0dfaef8e5408882416da6815e2f90a9f66d73d37",
+      "size": 58178,
+      "url": "https://vault.omniarchive.uk/archive/java/client-classic/c0.0.13a_03.jar"
     }
   },
-  "id": "c0.0.13a_03-launcher",
+  "id": "c0.0.13a_03",
   "javaVersion": {
     "component": "jre-legacy",
     "majorVersion": 8
@@ -315,7 +315,7 @@
   "logging": {},
   "mainClass": "net.minecraft.launchwrapper.Launch",
   "minimumLauncherVersion": 7,
-  "releaseTime": "2009-05-22T20:13:30+00:00",
+  "releaseTime": "2009-05-22T20:13:00+00:00",
   "time": "2009-05-21T22:00:00+00:00",
   "type": "old_alpha"
 }

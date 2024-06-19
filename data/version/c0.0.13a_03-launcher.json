@@ -26,10 +26,10 @@
   ],
   "normalizedVersion": "0.13.3+a.launcher",
   "previous": [
-    "c0.0.13a-launcher"
+    "c0.0.13a_03"
   ],
   "protocol": null,
-  "releaseTime": "2009-05-22T00:00:00+00:00",
+  "releaseTime": "2009-05-22T20:13:30+00:00",
   "server": false,
   "sharedMappings": false
 }
