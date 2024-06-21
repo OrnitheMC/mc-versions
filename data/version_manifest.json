@@ -5475,6 +5475,14 @@
       "details": "version/c0.0.19a_06-0137.json"
     },
     {
+      "id": "c0.0.19a_04",
+      "type": "old_alpha",
+      "url": "version/manifest/c0.0.19a_04.json",
+      "time": "2009-06-20T00:53:00+00:00",
+      "releaseTime": "2009-06-20T00:53:00+00:00",
+      "details": "version/c0.0.19a_04.json"
+    },
+    {
       "id": "server-c1.6",
       "type": "classic_server",
       "url": "version/manifest/server-c1.6.json",
