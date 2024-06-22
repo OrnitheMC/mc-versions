@@ -5374,6 +5374,14 @@
       "details": "version/c0.29_02.json"
     },
     {
+      "id": "c0.29_01",
+      "type": "old_alpha",
+      "url": "version/manifest/c0.29_01.json",
+      "time": "2021-06-26T12:16:50+00:00",
+      "releaseTime": "2009-10-29T13:38:00+00:00",
+      "details": "version/c0.29_01.json"
+    },
+    {
       "id": "server-c1.9.1",
       "type": "classic_server",
       "url": "version/manifest/server-c1.9.1.json",
@@ -5381,12 +5389,12 @@
       "details": "version/server-c1.9.1.json"
     },
     {
-      "id": "c0.29_01",
+      "id": "c0.29",
       "type": "old_alpha",
-      "url": "version/manifest/c0.29_01.json",
-      "time": "2021-06-26T12:16:50+00:00",
-      "releaseTime": "2009-10-29T00:00:00+00:00",
-      "details": "version/c0.29_01.json"
+      "url": "version/manifest/c0.29.json",
+      "time": "2009-10-29T10:02:00+00:00",
+      "releaseTime": "2009-10-29T10:02:00+00:00",
+      "details": "version/c0.29.json"
     },
     {
       "id": "server-c1.8.3",

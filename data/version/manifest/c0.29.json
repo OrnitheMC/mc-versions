@@ -10,12 +10,12 @@
   "assets": "legacy",
   "downloads": {
     "client": {
-      "sha1": "bb5e7f1c231f45fd630f30a75570937c103f5b55",
-      "size": 285561,
-      "url": "https://vault.omniarchive.uk/archive/java/client-classic/c0.29_01.jar"
+      "sha1": "35d5d6e55ab29094c8599d100bb8cafca0b9cd65",
+      "size": 284978,
+      "url": "https://vault.omniarchive.uk/archive/java/client-classic/c0.29.jar"
     }
   },
-  "id": "c0.29_01",
+  "id": "c0.29",
   "javaVersion": {
     "component": "jre-legacy",
     "majorVersion": 8
@@ -315,7 +315,7 @@
   "logging": {},
   "mainClass": "net.minecraft.launchwrapper.Launch",
   "minimumLauncherVersion": 7,
-  "releaseTime": "2009-10-29T13:38:00+00:00",
-  "time": "2021-06-26T12:16:50+00:00",
+  "releaseTime": "2009-10-29T10:02:00+00:00",
+  "time": "2009-10-29T10:02:00+00:00",
   "type": "old_alpha"
 }
