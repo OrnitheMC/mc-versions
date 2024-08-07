@@ -5160,12 +5160,12 @@
       "details": "version/in-20100219.json"
     },
     {
-      "id": "in-20100218",
+      "id": "in-20100218-0016",
       "type": "old_alpha",
-      "url": "version/manifest/in-20100218.json",
+      "url": "version/manifest/in-20100218-0016.json",
       "time": "2017-09-20T00:00:00+00:00",
       "releaseTime": "2010-02-18T00:16:00+00:00",
-      "details": "version/in-20100218.json"
+      "details": "version/in-20100218-0016.json"
     },
     {
       "id": "in-20100214",
