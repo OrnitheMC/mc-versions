@@ -9,7 +9,7 @@
       "url": "https://vault.omniarchive.uk/archive/java/client-indev/in-20100104-2258.jar"
     }
   },
-  "id": "in-20100105",
+  "id": "in-20100104-2258",
   "libraries": [
     "net.java.jinput:jinput-platform:2.0.5",
     "net.java.jinput:jinput:2.0.5",
@@ -24,7 +24,7 @@
   "next": [
     "in-20100110"
   ],
-  "normalizedVersion": "0.31.20100105",
+  "normalizedVersion": "0.31.20100104+2258",
   "previous": [
     "in-20091231-2255"
   ],

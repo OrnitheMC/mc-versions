@@ -139,7 +139,6 @@ export const omni2mcvMap: { [key: string]: string } = {
     '17w18a-1331': '17w18a',
     '17w18a-1450': '17w18a',
     // Pretty sure the UTC conversion was done incorrectly for omniarchive:
-    'in-20100104-2258': 'in-20100105',
     'in-20100218-0016': 'in-20100218',
     'inf-20100616-1808': 'inf-20100616',
     // Other

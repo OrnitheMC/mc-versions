@@ -5304,12 +5304,12 @@
       "details": "version/in-20100110.json"
     },
     {
-      "id": "in-20100105",
+      "id": "in-20100104-2258",
       "type": "old_alpha",
-      "url": "version/manifest/in-20100105.json",
+      "url": "version/manifest/in-20100104-2258.json",
       "time": "2013-08-06T07:33:30-07:00",
       "releaseTime": "2010-01-04T22:58:00+00:00",
-      "details": "version/in-20100105.json"
+      "details": "version/in-20100104-2258.json"
     },
     {
       "id": "in-20091231-2255",
