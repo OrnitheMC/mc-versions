@@ -9,7 +9,7 @@
       "url": "https://vault.omniarchive.uk/archive/java/client-classic/c0.0.19a_06-0137.jar"
     }
   },
-  "id": "c0.0.19a_06-0137",
+  "id": "c0.0.19a_06",
   "libraries": [
     "net.java.jinput:jinput-platform:2.0.5",
     "net.java.jinput:jinput:2.0.5",
@@ -24,7 +24,7 @@
   "next": [
     "c0.0.20a_01"
   ],
-  "normalizedVersion": "0.19.6+a.0137",
+  "normalizedVersion": "0.19.6+a",
   "previous": [
     "c0.0.19a_04"
   ],

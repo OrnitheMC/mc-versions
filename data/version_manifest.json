@@ -5483,12 +5483,12 @@
       "details": "version/server-c1.8.2.json"
     },
     {
-      "id": "c0.0.19a_06-0137",
+      "id": "c0.0.19a_06",
       "type": "old_alpha",
-      "url": "version/manifest/c0.0.19a_06-0137.json",
+      "url": "version/manifest/c0.0.19a_06.json",
       "time": "2020-10-17T19:47:58-00:00",
       "releaseTime": "2009-06-20T01:37:00+00:00",
-      "details": "version/c0.0.19a_06-0137.json"
+      "details": "version/c0.0.19a_06.json"
     },
     {
       "id": "c0.0.19a_04",
