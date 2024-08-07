@@ -15,7 +15,7 @@
       "url": "https://vault.omniarchive.uk/archive/java/client-infdev/inf-20100616-1808.jar"
     }
   },
-  "id": "inf-20100616",
+  "id": "inf-20100616-1808",
   "javaVersion": {
     "component": "jre-legacy",
     "majorVersion": 8

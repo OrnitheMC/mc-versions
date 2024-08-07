@@ -5008,12 +5008,12 @@
       "details": "version/inf-20100617-1205.json"
     },
     {
-      "id": "inf-20100616",
+      "id": "inf-20100616-1808",
       "type": "old_alpha",
-      "url": "version/manifest/inf-20100616.json",
+      "url": "version/manifest/inf-20100616-1808.json",
       "time": "2021-06-26T23:01:15+00:00",
       "releaseTime": "2010-06-16T18:08:00+00:00",
-      "details": "version/inf-20100616.json"
+      "details": "version/inf-20100616-1808.json"
     },
     {
       "id": "inf-20100615",
