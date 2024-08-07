@@ -5072,12 +5072,12 @@
       "details": "version/inf-20100414.json"
     },
     {
-      "id": "inf-20100413",
+      "id": "inf-20100413-1953",
       "type": "old_alpha",
-      "url": "version/manifest/inf-20100413.json",
+      "url": "version/manifest/inf-20100413-1953.json",
       "time": "2015-04-13T07:33:30-07:00",
       "releaseTime": "2010-04-13T19:53:00+00:00",
-      "details": "version/inf-20100413.json"
+      "details": "version/inf-20100413-1953.json"
     },
     {
       "id": "inf-20100330-1611",
