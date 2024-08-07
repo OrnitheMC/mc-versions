@@ -5460,6 +5460,14 @@
       "details": "version/c0.0.21a.json"
     },
     {
+      "id": "c0.0.20a_02",
+      "type": "old_alpha",
+      "url": "version/manifest/c0.0.20a_02.json",
+      "time": "2009-06-20T23:39:00+00:00",
+      "releaseTime": "2009-06-20T23:39:00+00:00",
+      "details": "version/c0.0.20a_02.json"
+    },
+    {
       "id": "c0.0.20a_01",
       "type": "old_alpha",
       "url": "version/manifest/c0.0.20a_01.json",
