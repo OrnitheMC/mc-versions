@@ -48,7 +48,7 @@
       "version": 4,
       "clients": [
         "a1.2.2-1624",
-        "a1.2.2-1938"
+        "a1.2.2"
       ],
       "servers": [
         "server-a0.2.4"

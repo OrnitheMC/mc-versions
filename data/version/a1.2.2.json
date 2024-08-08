@@ -9,7 +9,7 @@
       "url": "https://launcher.mojang.com/v1/objects/1c28c8431392641045b59e98a81877d7c94ff0ca/client.jar"
     }
   },
-  "id": "a1.2.2-1938",
+  "id": "a1.2.2",
   "libraries": [
     "net.java.jinput:jinput-platform:2.0.5",
     "net.java.jinput:jinput:2.0.5",
@@ -24,7 +24,7 @@
   "next": [
     "a1.2.3"
   ],
-  "normalizedVersion": "1.0.0-alpha.1.2.2+1938",
+  "normalizedVersion": "1.0.0-alpha.1.2.2",
   "previous": [
     "a1.2.2-1624"
   ],
