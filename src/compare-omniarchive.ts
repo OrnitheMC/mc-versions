@@ -140,6 +140,7 @@ export const omni2mcvMap: { [key: string]: string } = {
     '17w18a-1450': '17w18a',
     // Versions which are the final reuploads for their respective version ID:
     'a1.0.5-2149': 'a1.0.5',
+    'a1.0.13_01-1444': 'a1.0.13_01',
     // Other
     '1.2-pre': '1.2',
     'pc-132011-launcher': 'rd-132211-launcher',

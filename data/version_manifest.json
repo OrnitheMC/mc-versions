@@ -4768,12 +4768,12 @@
       "details": "version/a1.0.14-1603.json"
     },
     {
-      "id": "a1.0.13_01-1444",
+      "id": "a1.0.13_01",
       "type": "old_alpha",
-      "url": "version/manifest/a1.0.13_01-1444.json",
+      "url": "version/manifest/a1.0.13_01.json",
       "time": "2017-10-22T05:26:50+00:00",
       "releaseTime": "2010-07-29T14:44:00+00:00",
-      "details": "version/a1.0.13_01-1444.json"
+      "details": "version/a1.0.13_01.json"
     },
     {
       "id": "a1.0.13_01-1038",
