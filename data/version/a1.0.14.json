@@ -9,7 +9,7 @@
       "url": "https://vault.omniarchive.uk/archive/java/client-alpha/a1.0.14-1659.jar"
     }
   },
-  "id": "a1.0.14-1659",
+  "id": "a1.0.14",
   "libraries": [
     "net.java.jinput:jinput-platform:2.0.5",
     "net.java.jinput:jinput:2.0.5",
@@ -22,11 +22,11 @@
     "org.ow2.asm:asm-all:4.1"
   ],
   "next": [
-    "a1.0.15"
-  ],
-  "normalizedVersion": "1.0.0-alpha.1.0.14+1659",
-  "previous": [
     "a1.0.14-1659-launcher"
+  ],
+  "normalizedVersion": "1.0.0-alpha.1.0.14",
+  "previous": [
+    "a1.0.14-1603"
   ],
   "protocol": {
     "type": "classic",
