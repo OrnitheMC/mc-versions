@@ -9,7 +9,7 @@
       "url": "https://vault.omniarchive.uk/archive/java/client-alpha/a1.1.0-131933.jar"
     }
   },
-  "id": "a1.1.0-131933",
+  "id": "a1.1.0",
   "libraries": [
     "net.java.jinput:jinput-platform:2.0.5",
     "net.java.jinput:jinput:2.0.5",
@@ -24,7 +24,7 @@
   "next": [
     "a1.1.1"
   ],
-  "normalizedVersion": "1.0.0-alpha.1.1.0+131933",
+  "normalizedVersion": "1.0.0-alpha.1.1.0",
   "previous": [
     "a1.1.0-101847-launcher"
   ],

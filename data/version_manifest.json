@@ -4614,12 +4614,12 @@
       "details": "version/a1.1.1.json"
     },
     {
-      "id": "a1.1.0-131933",
+      "id": "a1.1.0",
       "type": "old_alpha",
-      "url": "version/manifest/a1.1.0-131933.json",
+      "url": "version/manifest/a1.1.0.json",
       "time": "2016-02-02T15:37:47+00:00",
       "releaseTime": "2010-09-13T19:33:00+00:00",
-      "details": "version/a1.1.0-131933.json"
+      "details": "version/a1.1.0.json"
     },
     {
       "id": "server-a0.2.0_01",
@@ -4629,20 +4629,20 @@
       "details": "version/server-a0.2.0_01.json"
     },
     {
-      "id": "a1.1.0-101847",
-      "type": "old_alpha",
-      "url": "version/manifest/a1.1.0-101847.json",
-      "time": "2017-10-22T05:26:50+00:00",
-      "releaseTime": "2010-09-10T18:47:00+00:00",
-      "details": "version/a1.1.0-101847.json"
-    },
-    {
       "id": "a1.1.0-101847-launcher",
       "type": "old_alpha",
       "url": "version/manifest/a1.1.0-101847-launcher.json",
       "time": "2010-09-12T22:00:00+00:00",
       "releaseTime": "2010-09-10T18:47:00+00:00",
       "details": "version/a1.1.0-101847-launcher.json"
+    },
+    {
+      "id": "a1.1.0-101847",
+      "type": "old_alpha",
+      "url": "version/manifest/a1.1.0-101847.json",
+      "time": "2017-10-22T05:26:50+00:00",
+      "releaseTime": "2010-09-10T18:47:00+00:00",
+      "details": "version/a1.1.0-101847.json"
     },
     {
       "id": "server-a0.2.0",

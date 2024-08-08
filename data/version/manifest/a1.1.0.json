@@ -15,7 +15,7 @@
       "url": "https://vault.omniarchive.uk/archive/java/client-alpha/a1.1.0-131933.jar"
     }
   },
-  "id": "a1.1.0-131933",
+  "id": "a1.1.0",
   "javaVersion": {
     "component": "jre-legacy",
     "majorVersion": 8
