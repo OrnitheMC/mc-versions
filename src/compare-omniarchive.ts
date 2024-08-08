@@ -146,6 +146,7 @@ export const omni2mcvMap: { [key: string]: string } = {
     'a1.1.0-131933': 'a1.1.0',
     'a1.2.0-2057': 'a1.2.0',
     'a1.2.2-1938': 'a1.2.2',
+    'a1.2.3_01-0958': 'a1.2.3_01',
     // Other
     '1.2-pre': '1.2',
     'pc-132011-launcher': 'rd-132211-launcher',

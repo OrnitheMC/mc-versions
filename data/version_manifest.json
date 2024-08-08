@@ -4476,12 +4476,12 @@
       "details": "version/server-a0.2.5-1004.json"
     },
     {
-      "id": "a1.2.3_01-0958",
+      "id": "a1.2.3_01",
       "type": "old_alpha",
-      "url": "version/manifest/a1.2.3_01-0958.json",
+      "url": "version/manifest/a1.2.3_01.json",
       "time": "2010-11-23T22:00:01+00:00",
       "releaseTime": "2010-11-24T09:58:00+00:00",
-      "details": "version/a1.2.3_01-0958.json"
+      "details": "version/a1.2.3_01.json"
     },
     {
       "id": "a1.2.3_01-0956",
