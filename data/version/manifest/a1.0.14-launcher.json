@@ -15,7 +15,7 @@
       "url": "https://launcher.mojang.com/v1/objects/9b4b90d8def2a680b7c9eca40dd03e2266c8977a/client.jar"
     }
   },
-  "id": "a1.0.14-1659-launcher",
+  "id": "a1.0.14-launcher",
   "javaVersion": {
     "component": "jre-legacy",
     "majorVersion": 8

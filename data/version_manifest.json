@@ -4744,12 +4744,12 @@
       "details": "version/a1.0.15.json"
     },
     {
-      "id": "a1.0.14-1659-launcher",
+      "id": "a1.0.14-launcher",
       "type": "old_alpha",
-      "url": "version/manifest/a1.0.14-1659-launcher.json",
+      "url": "version/manifest/a1.0.14-launcher.json",
       "time": "2010-07-29T22:00:00+00:00",
       "releaseTime": "2010-07-30T00:00:00+00:00",
-      "details": "version/a1.0.14-1659-launcher.json"
+      "details": "version/a1.0.14-launcher.json"
     },
     {
       "id": "a1.0.14",

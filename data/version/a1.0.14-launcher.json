@@ -9,7 +9,7 @@
       "url": "https://launcher.mojang.com/v1/objects/9b4b90d8def2a680b7c9eca40dd03e2266c8977a/client.jar"
     }
   },
-  "id": "a1.0.14-1659-launcher",
+  "id": "a1.0.14-launcher",
   "libraries": [
     "net.java.jinput:jinput-platform:2.0.5",
     "net.java.jinput:jinput:2.0.5",
@@ -24,7 +24,7 @@
   "next": [
     "a1.0.15"
   ],
-  "normalizedVersion": "1.0.0-alpha.1.0.14+1659.launcher",
+  "normalizedVersion": "1.0.0-alpha.1.0.14+launcher",
   "previous": [
     "a1.0.14"
   ],
