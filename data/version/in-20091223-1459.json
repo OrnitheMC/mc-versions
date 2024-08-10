@@ -26,6 +26,7 @@
   ],
   "normalizedVersion": "0.31.20091223+1459",
   "previous": [
+    "c0.30-c",
     "c0.30-c-renew"
   ],
   "protocol": null,
