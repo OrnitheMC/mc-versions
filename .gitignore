@@ -4,3 +4,4 @@ dist/
 google-service-account.json
 .idea/
 storage/
+temp.ts

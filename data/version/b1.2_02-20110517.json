@@ -4,12 +4,12 @@
   "displayVersion": "Minecraft Beta 1.2_02",
   "downloads": {
     "client": {
-      "sha1": "551be32655e81a410d81e76259502dde83ebe525",
-      "size": 1182073,
-      "url": "https://vault.omniarchive.uk/archive/java/client-beta/b1.2/b1.2_02.jar"
+      "sha1": "a9b9522e7b4c1738209694e0546cb9f980401804",
+      "size": 1504433,
+      "url": "https://vault.omniarchive.uk/archive/java/misc/b1.2_02-20110517.jar"
     }
   },
-  "id": "b1.2_02",
+  "id": "b1.2_02-20110517",
   "libraries": [
     "net.java.jinput:jinput-platform:2.0.5",
     "net.java.jinput:jinput:2.0.5",
@@ -21,21 +21,16 @@
     "org.lwjgl.lwjgl:lwjgl_util:2.9.0",
     "org.ow2.asm:asm-all:4.1"
   ],
-  "next": [
-    "b1.3-1647",
-    "b1.3-1713",
-    "b1.2_02-20110517",
-    "b1.2_02-launcher"
-  ],
-  "normalizedVersion": "1.0.0-beta.1.2.2",
+  "next": [],
+  "normalizedVersion": "1.0.0-beta.1.2.2+20110517",
   "previous": [
-    "b1.2_02-launcher"
+    "b1.2_02"
   ],
   "protocol": {
     "type": "modern",
     "version": 8
   },
-  "releaseTime": "2011-01-21T13:57:00+00:00",
+  "releaseTime": "2011-05-17T16:27:00+00:00",
   "server": false,
   "sharedMappings": false,
   "world": {
