@@ -26,6 +26,7 @@
   ],
   "normalizedVersion": "0.14.8+a",
   "previous": [
+    "c0.0.13a_03",
     "c0.0.13a_03-launcher"
   ],
   "protocol": null,
