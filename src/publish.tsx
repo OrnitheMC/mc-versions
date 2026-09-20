@@ -2,7 +2,7 @@
 import './types.d.ts'
 
 import * as path from 'https://deno.land/std@0.113.0/path/mod.ts'
-import React from 'https://esm.sh/react@17.0.2'
+import * as React from 'https://esm.sh/react@17.0.2'
 import {renderToStaticMarkup} from 'https://esm.sh/react-dom@17.0.2/server'
 import {readdirRecursive} from './utils.ts'
 import {getType} from './versioning.ts'
