@@ -6385,21 +6385,21 @@
       "id": "b1.1_01",
       "type": "old_beta",
       "url": "https://ornithemc.net/mc-versions/gen2/version/manifest/b1.1_01.json",
-      "sha1": "833389a97fde6b9c5ffcd366709915720617790b",
-      "time": "2026-02-16T11:23:18+00:00",
+      "sha1": "f0fe134c361645cb6d8b09701e3875540847d40f",
+      "time": "2026-08-22T06:20:41+00:00",
       "releaseTime": "2010-12-22T13:02:00+00:00",
       "details": "https://ornithemc.net/mc-versions/gen2/version/b1.1_01.json",
-      "detailsSha1": "d950d607095fae7cd28ce02c10984e5eb63e7958"
+      "detailsSha1": "08996194560c855605207c6c81af28403ff3bb7c"
     },
     {
       "id": "b1.1",
       "type": "old_beta",
       "url": "https://ornithemc.net/mc-versions/gen2/version/manifest/b1.1.json",
-      "sha1": "c119539a73a801af8c79179ac3a791d41dcc55a5",
-      "time": "2026-02-16T11:23:18+00:00",
+      "sha1": "909c372d1e8182af708b4e937e1e0fb7852b71b2",
+      "time": "2026-08-22T06:19:54+00:00",
       "releaseTime": "2010-12-22T12:55:30+00:00",
       "details": "https://ornithemc.net/mc-versions/gen2/version/b1.1.json",
-      "detailsSha1": "c32cc3773f7b8e2b85f5ac85a21ab9f5e50282f8"
+      "detailsSha1": "05fdb6411335315909e5e6f467aa96e82699a91c"
     },
     {
       "id": "b1.1-1255",
@@ -6415,11 +6415,11 @@
       "id": "b1.1-1245",
       "type": "old_beta",
       "url": "https://ornithemc.net/mc-versions/gen2/version/manifest/b1.1-1245.json",
-      "sha1": "a8db7746da0be7af4b7a430ea113fbc5ed3ea6ba",
-      "time": "2026-02-16T11:23:18+00:00",
+      "sha1": "4ec88a3677856f3585dbcc69d759fd9013d56187",
+      "time": "2026-08-22T06:17:34+00:00",
       "releaseTime": "2010-12-22T12:45:10+00:00",
       "details": "https://ornithemc.net/mc-versions/gen2/version/b1.1-1245.json",
-      "detailsSha1": "53af6d0308e21d9166a3e940d0abe50432a675d9"
+      "detailsSha1": "6979bbb37c980adc5a2d83690b5b791846be6ca5"
     },
     {
       "id": "b1.0.2",
@@ -6976,7 +6976,7 @@
       "type": "alpha_server",
       "url": "https://ornithemc.net/mc-versions/gen2/version/manifest/a0.1.2.json",
       "sha1": "36025f44d7b1255729a09324dc83fe77827ba432",
-      "time": "2026-03-09T15:22:34+00:00",
+      "time": "2026-03-09T15:32:09+00:00",
       "releaseTime": "2010-08-12T18:54:00+00:00",
       "details": "https://ornithemc.net/mc-versions/gen2/version/a0.1.2.json",
       "detailsSha1": "ca4f4bc0ddd2f1aaf76892364b3f27df53e468d0"
@@ -6986,7 +6986,7 @@
       "type": "alpha_server",
       "url": "https://ornithemc.net/mc-versions/gen2/version/manifest/a0.1.2-1817.json",
       "sha1": "5511bd56d84efc48cfe5520aeedb038605b850f2",
-      "time": "2026-03-09T15:22:12+00:00",
+      "time": "2026-03-09T15:32:09+00:00",
       "releaseTime": "2010-08-12T18:54:00+00:00",
       "details": "https://ornithemc.net/mc-versions/gen2/version/a0.1.2-1817.json",
       "detailsSha1": "d84f3109244adf1766b275a73c6f939cfa1771f1"
