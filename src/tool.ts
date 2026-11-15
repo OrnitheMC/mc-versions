@@ -81,7 +81,7 @@ async function updateAndCacheExternalVersionJsons(remoteManifestJson: Omniarchiv
 async function readCachedExternalVersionJsons(): Promise<Map<string, OmniVersionManifest> | null> {
     const cacheDir = 'external_manifests/ugly';
     if (!(await fileExists(cacheDir))) {
-        await Deno.mkdir(cacheDir);
+        await Deno.mkdir(cacheDir, { recursive: true });
         return null;
     }
 
@@ -130,7 +130,6 @@ const standaloneSevers: VersionId[] = [
     "a0.2.8",
     "b1.3-1647",
     "b1.3-1731",
-    // TODO Omniarchive manifest has mixed servers
     "b1.5_02",
     "b1.8-pre2-131240",
     "b1.9-pre4-1425",
@@ -283,13 +282,20 @@ const weirdMergeMap: Map<LocalId, [client: ExternalOriginalId, server: IndexOrig
     ["14w04a-1526", ["14w04a", "14w04a-1526"]],
     ["1.7.5-02260922", ["1.7.5", "1.7.5-02260922"]]
 ]);
+type RemoteServerId = VersionId;
+// Versions with version IDs and client downloads that match with the Omniarchive manifest, but whose server downloads are replaced by newer server downloads on the Omniarchive manifest
+const clientOnlyVersions: Map<VersionId, RemoteServerId> = new Map([
+    ["b1.0.2-0841", "b1.0_01"],
+
+]);
 type Reason = string;
 // Versions with version IDs that match with what the Omniarchive manifest has, but whose downloads don't match with locally provided downloads, with reasons as to why mapped to the version ID
 const exemptOtherVersions: Map<VersionId, Reason> = new Map([
     ["b1.0.2-0841", "The Omniarchive manifest version includes the server for b1.0_01; the client download otherwise matches"],
-    ["b1.1-1245", "The Omniarchive manifest version offers the server for b1.1_01; if the server downloads were switched, every download would match"],
-    ["b1.1-1255", "The Omniarchive manifest version includes the server for b1.1_01 (incorrectly, currently a bug); the client download otherwise matches"],
-    ["b1.1_01", "The Omniarchive manifest version offers the server for b1.1-1245; if the server downloads were switched, every download would match"],
+    // TODO Downloads provide the correct server on the Omniarchive manifest for the following three, but the hashes are still incorrect
+    //["b1.1-1245", "The Omniarchive manifest version offers the server for b1.1_01; if the server downloads were switched, every download would match"],
+    //["b1.1-1255", "The Omniarchive manifest version includes the server for b1.1_01 (incorrectly, currently a bug); the client download otherwise matches"],
+    //["b1.1_01", "The Omniarchive manifest version offers the server for b1.1-1245; if the server downloads were switched, every download would match"],
     ["b1.2_02", "The Omniarchive manifest version includes the server for b1.2_01; the client download otherwise matches"],
     ["b1.2_02-launcher", "The Omniarchive manifest version includes the server for b1.2_01; the client download otherwise matches"],
     ["b1.4-1634", "The Omniarchive manifest version includes the server for b1.4-1507; the client download otherwise matches"],
@@ -334,6 +340,8 @@ const serverIndexRenameMap: Map<VersionId, IndexOriginalId> = new Map([
 
 const shouldSkip = (key: string): boolean => !(standaloneSevers.includes(key) || orphanServers.includes(key) ||
     mirrorlessRenameMap.has(key) || mirrorMap.has(key) || reverseMirrorMap.has(key) || mergedMirrorMap.has(key) || weirdMergeMap.has(key));
+const isSupportedByOrnithe = (entry: string): boolean => entry <= "1.14.4-pre7" || (entry >= "1.2-pre" && entry <= "1.2.5-pre") || (entry >= "1.3-pre-1249" && entry <= "19w36a")
+    || entry.startsWith("2.0-") || (entry >= "3D Shareware v1.34" && entry <= "combat3") || entry >= "in-20091223-1459";
 
 function compareLocalWithOmniarchive(localVersionsMap: Map<string, VersionManifest>, remoteVersionsMap: Map<string, OmniVersionManifest>): void {
     const missingExternal = [];
@@ -359,10 +367,7 @@ function compareLocalWithOmniarchive(localVersionsMap: Map<string, VersionManife
     console.log(/*test*/);
 
     const missingLocal = [];
-    const iterable = remoteVersionsMap.entries().filter((entry) =>
-        entry[0] <= "1.14.4-pre7" || (entry[0] >= "1.2-pre" && entry[0] <= "1.2.5") || (entry[0] >= "1.3-pre-1249" && entry[0] <= "19w36a")
-        || entry[0].startsWith("2.0-") || (entry[0] >= "3D Shareware v1.34" && entry[0] <= "combat3") || entry[0] >= "in-20091223-1459");
-    const filteredRemoteMap = new Map(iterable);
+    const filteredRemoteMap = new Map(remoteVersionsMap.entries().filter(([version]) => isSupportedByOrnithe(version)));
 
     filteredRemoteMap.forEach((_value, key) => {
         if (!localVersionsMap.has(key) && !mirrorlessRenameMap.values().toArray().includes(key)) {
@@ -627,6 +632,29 @@ async function verifyVersionCorrectness(localVersionsMap: Map<string, VersionMan
     console.log(`There are ${unindexedServers.size} servers that are not on the Omniarchive index`);
     if (unaccountedServers > 0) console.warn(`%c${unaccountedServers} are unaccounted for`, 'color: red');
     else console.log('%cand that\'s okay!', 'color: green');
+
+    //const test = spreadsheetClients.union(spreadsheetServers).keys().toArray().sort();
+    console.log(/*test*/);
+    type IndexLocalTuple = [indexId: IndexOriginalId, localId: LocalId];
+    const reverseRenameIterable = mirrorlessRenameMap.entries().map(([localId, indexId]): IndexLocalTuple => [indexId, localId]);
+    const reverseStandaloneServerRenameIterable = renamedStandaloneServers.entries().map(([localId, indexId]): IndexLocalTuple => [indexId, localId]);
+    const reverseOrphanServerRenameIterable = renamedOrphanServers.entries().map(([localId, indexId]): IndexLocalTuple => [indexId, localId]);
+    const indexToLocalServerMap = new Map<IndexOriginalId, LocalId>([...reverseRenameIterable, ...reverseStandaloneServerRenameIterable, ...reverseOrphanServerRenameIterable]);
+    const filteredSpreadsheetServers = spreadsheetServers.keys().filter((version) => isSupportedByOrnithe(version)).toArray();
+
+    console.log('Reverse index server version check:');
+    let noServer = 0;
+    filteredSpreadsheetServers.forEach((server) => {
+        const renamedServer = indexToLocalServerMap.get(server) ?? server;
+        const localDownloads = localVersionsMap.get(renamedServer)?.downloads;
+        const correct = !!localDownloads && !!(localDownloads.server ?? localDownloads.server_zip) ;
+
+        if (!correct) {
+            console.warn(`%c${server} server is not available locally!`, 'color: red');
+            noServer++;
+        }
+    });
+    if (noServer > 0) console.log(`${noServer} servers not available locally`);
 }
 
 function checkLocalManifestEntries(manifest: MainManifest, versionJsons: Map<string, VersionManifest>, detailsJsons: Map<string, VersionData>): void {
@@ -716,7 +744,9 @@ if (import.meta.main) (async () => {
     const localVersionJsonsMap = await readLocalVersionJsons();
     const localDetailsJsonsMap = await readLocalDetailsJsons();
 
-    const remoteManifestJson: OmniarchiveMainManifest = await (await fetch('https://meta.omniarchive.uk/v1/manifest.json')).json();
+    //const omniManifestUrl = 'https://meta.omniarchive.uk/v1/manifest.json';
+    const omniManifestUrl = 'https://meta.celestia.sh/v1/manifest.json';
+    const remoteManifestJson: OmniarchiveMainManifest = await (await fetch(omniManifestUrl)).json();
     let remoteVersionJsonsMap = await (async () => {
         const cached = await readCachedExternalVersionJsons();
         if (cached && cached.size > 0) return cached;

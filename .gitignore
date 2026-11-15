@@ -4,6 +4,6 @@ dist/
 google-service-account.json
 .idea/
 storage/
-external_manifests/
+external_manifests*/
 temp.ts
 spreadsheet.json
